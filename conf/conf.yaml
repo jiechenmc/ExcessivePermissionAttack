@@ -2,7 +2,7 @@ apiServer: "127.0.0.1:40303"
 proxyAddress: "" # When not using a proxy, set it to empty
 auth:
   - tokenFile: "/root/ExcessivePermissionAttack/crt/token" # Token file path (when token and crt are set at the same time, token authentication takes precedence)
-  - kubeconfig: ""
+  - kubeconfig: "/root/.kube/config"
   - crt: "/root/ExcessivePermissionAttack/crt/admin.crt" # crt file path
     key: "/root/ExcessivePermissionAttack/crt/admin.key" # key file path
 ssh: #Controlled node (token will be obtained on this node)

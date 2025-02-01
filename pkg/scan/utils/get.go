@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"k8sRBACdetect/pkg/request"
 	apis "k8sRBACdetect/structure"
 	"strings"
@@ -16,8 +15,6 @@ func GetPods() ([]apis.Pod, error) {
 	}
 
 	resp, err := request.ApiRequest(opts)
-	fmt.Println("RESP")
-	fmt.Println(resp)
 	if err != nil {
 		return nil, err
 	}

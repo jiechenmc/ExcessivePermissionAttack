@@ -3,7 +3,6 @@ package request
 import (
 	"bytes"
 	"crypto/tls"
-	"fmt"
 	"io/ioutil"
 	"k8sRBACdetect/conf"
 	"net/http"
@@ -23,14 +22,12 @@ type K8sRequestOption struct {
 }
 
 func ApiRequest(opts K8sRequestOption) (string, error) {
-	fmt.Println(conf.ApiServer)
 	if opts.Server == "" {
 		opts.Server = conf.ApiServer
 	}
 	opts.Method = strings.ToUpper(opts.Method)
 	url := "https://" + opts.Server + opts.Api
 
-	fmt.Println(url)
 	var client *http.Client
 	client = &http.Client{}
 	request, err := http.NewRequest(opts.Method, url, bytes.NewBuffer([]byte(opts.PostData)))

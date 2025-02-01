@@ -57,7 +57,7 @@ func NewGetSA2(sas map[string]*structure.SA) map[string]*structure.SA {
 	result := sas
 	pods, err := utils.GetPods()
 	if err != nil {
-		fmt.Println("[Get pods] -< failed: ", err.Error())
+		fmt.Println("[Get pods] failed: ", err.Error())
 	}
 	for _, pod := range pods {
 		_, exists := result[pod.Namespace+"/"+pod.ServiceAccount]
