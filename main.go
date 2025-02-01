@@ -12,8 +12,9 @@ import (
 func main() {
 	cmd.Main()
 }
+
 func init() {
-	viper.SetConfigFile(".\\conf\\conf.yaml")
+	viper.SetConfigFile("./conf/conf.yaml")
 	if err := viper.ReadInConfig(); err != nil {
 		fmt.Printf("Error reading config file: %s\n", err)
 		return

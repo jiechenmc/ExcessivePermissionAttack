@@ -30,6 +30,8 @@ func Main() {
 					saBindingMap = scan.GetSaBinding2()
 				}
 				if len(criticalSAs) == 0 {
+					// TODO: PROBLEM HERE
+					fmt.Println(saBindingMap)
 					criticalSAs = scan.GetCriticalSA(scan.NewGetSA2(saBindingMap), ssh.Nodename)
 				}
 				fmt.Println()

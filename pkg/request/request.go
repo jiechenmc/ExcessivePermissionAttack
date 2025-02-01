@@ -3,6 +3,7 @@ package request
 import (
 	"bytes"
 	"crypto/tls"
+	"fmt"
 	"io/ioutil"
 	"k8sRBACdetect/conf"
 	"net/http"
@@ -22,11 +23,14 @@ type K8sRequestOption struct {
 }
 
 func ApiRequest(opts K8sRequestOption) (string, error) {
+	fmt.Println(conf.ApiServer)
 	if opts.Server == "" {
 		opts.Server = conf.ApiServer
 	}
 	opts.Method = strings.ToUpper(opts.Method)
 	url := "https://" + opts.Server + opts.Api
+
+	fmt.Println(url)
 	var client *http.Client
 	client = &http.Client{}
 	request, err := http.NewRequest(opts.Method, url, bytes.NewBuffer([]byte(opts.PostData)))
@@ -41,6 +45,7 @@ func ApiRequest(opts K8sRequestOption) (string, error) {
 	//Priority: opts.token => token file => cert file
 	tokenBytes, _ := ioutil.ReadFile(conf.TokenFile)
 	var cert tls.Certificate
+
 	if opts.Token != "" {
 	} else if string(tokenBytes) != "" {
 		opts.Token = string(tokenBytes)
@@ -56,6 +61,7 @@ func ApiRequest(opts K8sRequestOption) (string, error) {
 			return "", err
 		}
 	}
+
 	if conf.ProxyAddress != "" {
 		proxyURL, _ := netUrl.Parse(conf.ProxyAddress)
 		if opts.Token != "" {
