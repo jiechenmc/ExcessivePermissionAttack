@@ -24,7 +24,7 @@ func init() {
 	conf.TokenFile = viper.GetString("auth.0.tokenFile")
 	conf.Kubeconfig = viper.GetString("auth.1.kubeconfig")
 	conf.AdminCert = viper.GetString("auth.2.crt")
-	conf.AdminCert = viper.GetString("auth.2.key")
+	conf.AdminCertKey = viper.GetString("auth.2.key")
 
 	var sshConfig structure.SSHConfig
 	if err := viper.UnmarshalKey("ssh.0", &sshConfig); err != nil {
