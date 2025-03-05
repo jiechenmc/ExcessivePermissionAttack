@@ -1,4 +1,4 @@
-apiServer: "127.0.0.1:45727"
+apiServer: "127.0.0.1:56789"
 proxyAddress: "" # When not using a proxy, set it to empty
 auth:
   - tokenFile: "/root/ExcessivePermissionAttack/crt/token" # Token file path (when token and crt are set at the same time, token authentication takes precedence)
